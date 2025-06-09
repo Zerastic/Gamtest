@@ -3,7 +3,16 @@
   position:fixed; left:0; top:0; bottom:0; width:260px;
   background:#232323; color:#eaeaea; display:flex; flex-direction:column;
   font-family:"Inter",sans-serif; box-shadow:2px 0 8px #0007;
+  transform:translateX(0); transition:transform .3s ease;
 }
+#toggleSidebar{
+  position:fixed; top:.5rem; left:.5rem; z-index:1000;
+  background:#4b7bec; color:#fff; border:none; padding:.5rem .6rem;
+  border-radius:4px; cursor:pointer; box-shadow:0 2px 5px #0006;
+}
+body.sidebar-closed #sidebar{transform:translateX(-260px);}
+body.sidebar-closed #dialogueBox{left:0;}
+body.sidebar-closed #choices{left:0;}
 #sidebar h2{margin:.5rem 0; font-size:1rem; color:#79f2ff; letter-spacing:.04em}
 
 /* scrollable panes */
@@ -22,16 +31,18 @@
 
 /* action buttons */
 #actions button{
-  width:100%; margin:.25rem 0; padding:.4rem .5rem; border:none; border-radius:4px;
-  background:#3a3a3a; color:#fff; cursor:pointer; transition:background .15s
+  width:100%; margin:.25rem 0; padding:.45rem .5rem; border:none; border-radius:4px;
+  background:linear-gradient(#4b7bec,#3867d6); color:#fff; cursor:pointer;
+  box-shadow:0 2px 4px #0006; transition:background .15s, transform .15s
 }
-#actions button:hover{background:#4b7bec}
+#actions button:hover{background:linear-gradient(#5fa8ff,#4b7bec); transform:translateY(-2px)}
 
 #dialogueBox{
   position:fixed; left:260px; right:0; bottom:0; height:30vh;
   display:flex; background:#1d1d25ee; backdrop-filter:blur(6px);
   border-top:2px solid #79f2ff; padding:1.2rem; box-sizing:border-box;
-  font-family:"Merriweather",serif; color:#e8e6ff
+  font-family:"Merriweather",serif; color:#e8e6ff;
+  transition:left .3s ease;
 }
 #portrait{
   width:22%; background-size:contain; background-repeat:no-repeat; background-position:center;
@@ -51,13 +62,17 @@
 
 #choices{
   position:fixed; left:260px; right:0; bottom:30vh;
-  display:flex; flex-direction:column; gap:.5rem; padding:0 1.6rem 1rem
+  display:flex; flex-direction:column; gap:.5rem; padding:0 1.6rem 1rem;
+  transition:left .3s ease;
 }
 #choices button{
   background:#2d2d3a; color:#fff; border:none; padding:.6rem 1rem;
-  border-radius:6px; font-size:1rem; text-align:left; transition:transform .15s,background .15s
+  border-radius:6px; font-size:1rem; text-align:left;
+  transition:transform .15s, background .15s; box-shadow:0 2px 4px #0006;
 }
-#choices button:hover{background:#4b7bec; transform:translateX(3px)}
+#choices button:hover{
+  background:#4b7bec; transform:translateX(3px);
+}
 
 #settingsBtn{position:fixed; top:.5rem; right:.5rem}
 .modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center}
