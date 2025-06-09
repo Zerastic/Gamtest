@@ -1,10 +1,10 @@
 {
   "Aurora": {
-    "portrait": "img/aurora.png",
+    "portrait": "img/portraits/aurora.png",
     "voice": null
   },
   "Trainer": {
-    "portrait": "img/trainer.png",
+    "portrait": "img/portraits/trainer.png",
     "voice": null
   }
 }

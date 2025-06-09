@@ -1,22 +1,23 @@
 // js/ui.js
-let historyList = [];
 let gScenes, gCharacters, gItems, gMetadata;
 
 function typeText(el, text){
   return new Promise(resolve => {
+    const plain = text.replace(/<[^>]+>/g, '');
     el.textContent = '';
     let i = 0;
     const timer = setInterval(()=>{
-      el.textContent += text[i];
+      el.textContent += plain[i];
       i++;
-      if(i >= text.length){
+      if(i >= plain.length){
         clearInterval(timer);
+        el.innerHTML = text;
         resolve();
       }
     }, 30);
     function skip(){
       clearInterval(timer);
-      el.textContent = text;
+      el.innerHTML = text;
       el.removeEventListener('click', skip);
       document.removeEventListener('keydown', keySkip);
       resolve();
@@ -27,23 +28,6 @@ function typeText(el, text){
   });
 }
 
-function updateHistory(state, scenes, container, allow){
-  if(historyList[historyList.length-1] !== state.scene){
-    historyList.push(state.scene);
-  }
-  container.innerHTML = '';
-  historyList.forEach(sceneName =>{
-    const a = document.createElement('a');
-    a.textContent = sceneName;
-    if(allow){
-      a.onclick = () => { state.scene = sceneName; historyList=[]; render(state, gScenes, gCharacters, gItems, gMetadata); };
-    }else{
-      a.style.pointerEvents = 'none';
-      a.style.opacity = '0.5';
-    }
-    container.appendChild(a);
-  });
-}
 
 function updateInventory(state, items, container){
   container.innerHTML = '';
@@ -72,12 +56,17 @@ function updateStats(state, container){
     row.className = 'row';
     const name = document.createElement('span');
     name.textContent = k.toUpperCase();
-    const val = document.createElement('span');
-    val.textContent = v;
-    if(v < 25) val.classList.add('danger');
-    else if(v < 50) val.classList.add('warning');
-    else val.classList.add('good');
-    row.appendChild(name); row.appendChild(val);
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+    const fill = document.createElement('div');
+    fill.className = 'fill';
+    fill.style.width = Math.max(0, Math.min(v, 100)) + '%';
+    if(v < 25) fill.classList.add('danger');
+    else if(v < 50) fill.classList.add('warning');
+    else fill.classList.add('good');
+    bar.appendChild(fill);
+    row.appendChild(name);
+    row.appendChild(bar);
     container.appendChild(row);
   });
 }
@@ -86,8 +75,6 @@ export async function render(state, scenes, characters={}, items={}, metadata={}
   gScenes = scenes; gCharacters = characters; gItems = items; gMetadata = metadata;
   document.getElementById('gameTitle').textContent = metadata.title || '';
 
-  const historyEl = document.getElementById('history');
-  updateHistory(state, scenes, historyEl, false);
   const invEl = document.getElementById('inventory');
   updateInventory(state, items, invEl);
   const statsEl = document.getElementById('stats');
@@ -116,7 +103,6 @@ export async function render(state, scenes, characters={}, items={}, metadata={}
 
   await typeText(textEl, s.text.join(' '));
   continueHint.style.opacity = '1';
-  updateHistory(state, scenes, historyEl, true);
 
   const choicesEl = document.getElementById('choices');
   choicesEl.innerHTML = '';
