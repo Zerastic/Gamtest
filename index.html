@@ -7,10 +7,28 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <aside id="sidebar"></aside>
+  <aside id="sidebar">
+    <h2 id="gameTitle"></h2>
+    <div id="history"></div>
+    <ul id="inventory"></ul>
+    <div id="stats"></div>
+    <div id="clock"></div>
+    <div id="actions">
+      <button id="actionSave">Save</button>
+      <button id="actionLoad">Load</button>
+      <button id="actionSettings">Settings</button>
+    </div>
+  </aside>
 
   <section id="main">
-    <div id="dialog"></div>
+    <div id="dialogueBox" class="fade">
+      <div id="portrait"></div>
+      <div id="textPanel">
+        <div id="nameBar"></div>
+        <div id="text"></div>
+      </div>
+      <div id="continueHint">▶</div>
+    </div>
     <div id="choices"></div>
     <button id="settingsBtn">⚙️</button>
   </section>
