@@ -1,0 +1,18 @@
+// data/scenes.json
+{
+  "prologue": {
+    "text": ["<b>Aurora:</b> Welcome, stranger…"],
+    "choices": [
+      { "label": "Who are you?", "goto": "scene1" },
+      { "label": "Leave.",       "goto": "scene2" }
+    ]
+  },
+  "scene1": {
+    "text": ["<b>Aurora:</b> I am the keeper of this realm."],
+    "choices": []
+  },
+  "scene2": {
+    "text": ["You turn away, into the mist."],
+    "choices": []
+  }
+}
