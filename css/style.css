@@ -43,6 +43,8 @@ body.sidebar-closed #choices{left:0;}
   border-top:2px solid #79f2ff; padding:1.2rem; box-sizing:border-box;
   font-family:"Merriweather",serif; color:#e8e6ff;
   transition:left .3s ease;
+  cursor:pointer;
+  user-select:none;
 }
 #portrait{
   width:22%; background-size:contain; background-repeat:no-repeat; background-position:center;
@@ -56,7 +58,8 @@ body.sidebar-closed #choices{left:0;}
 #text{flex:1; line-height:1.55; font-size:1.05rem; overflow-y:auto}
 #continueHint{
   align-self:flex-end; font-size:1.4rem; opacity:0;
-  animation:blink 1.2s infinite step-end; margin-left:.5rem
+  animation:blink 1.2s infinite step-end; margin-left:.5rem;
+  user-select:none;
 }
 @keyframes blink{ 0%{opacity:0} 50%{opacity:1} 100%{opacity:0} }
 
