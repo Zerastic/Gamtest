@@ -1,3 +1,4 @@
 {
-  "potion": {"name": "Healing Potion", "icon": "🧪", "desc": "Restores a bit of HP"}
+  "potion": {"name": "Healing Potion", "icon": "🧪", "desc": "Restores a bit of HP"},
+  "dagger": {"name": "Iron Dagger", "icon": "\uD83D\uDDE1\uFE0F", "desc": "A basic weapon"}
 }

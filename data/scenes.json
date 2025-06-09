@@ -1,4 +1,3 @@
-// data/scenes.json
 {
   "prologue": {
     "text": ["<b>Aurora:</b> Welcome, stranger…"],
@@ -28,8 +27,10 @@
     ]
   },
   "town": {
-    "text": ["The town is quiet but welcoming."],
+    "text": ["The town is quiet but welcoming. Where will you go?"],
     "choices": [
+      { "label": "Visit the training grounds", "goto": "training" },
+      { "label": "Go home", "goto": "bedroom" },
       { "label": "Return to Aurora", "goto": "prologue" }
     ]
   },
@@ -37,6 +38,29 @@
     "text": ["Trees surround you in every direction."],
     "choices": [
       { "label": "Return to Aurora", "goto": "prologue" }
+    ]
+  },
+  "training": {
+    "text": ["<b>Trainer:</b> Ready to put in some work?"],
+    "choices": [
+      { "label": "Absolutely!", "action": "train", "goto": "town" },
+      { "label": "Maybe later.", "goto": "town" }
+    ]
+  },
+  "bedroom": {
+    "text": [
+      "Your small bedroom is tidy.",
+      "A locked chest sits in the corner."
+    ],
+    "choices": [
+      { "label": "Open the chest", "action": "openChest" },
+      { "label": "Return to town", "goto": "town" }
+    ]
+  },
+  "chestOpened": {
+    "text": ["Using the key, you open the chest and find a dagger."],
+    "choices": [
+      { "label": "Take the dagger", "action": "takeDagger" }
     ]
   }
 }
