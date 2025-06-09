@@ -43,5 +43,9 @@ document.getElementById('actionLoad').onclick = () => {
 };
 document.getElementById('actionSettings').onclick = () => toggleModal(true);
 
+document.getElementById('toggleSidebar').onclick = () => {
+  document.body.classList.toggle('sidebar-closed');
+};
+
 window.addEventListener('beforeunload', ()=> save(state)); // autosave on tab close
 loadData();

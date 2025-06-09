@@ -8,11 +8,35 @@
     ]
   },
   "scene1": {
-    "text": ["<b>Aurora:</b> I am the keeper of this realm."],
-    "choices": []
+    "text": [
+      "<b>Aurora:</b> I am the keeper of this realm.",
+      "Where will you go?"
+    ],
+    "choices": [
+      { "label": "Visit the town", "goto": "town" },
+      { "label": "Head into the forest", "goto": "forest" }
+    ]
   },
   "scene2": {
-    "text": ["You turn away, into the mist."],
-    "choices": []
+    "text": [
+      "You turn away, into the mist.",
+      "Where will you go?"
+    ],
+    "choices": [
+      { "label": "Visit the town", "goto": "town" },
+      { "label": "Head into the forest", "goto": "forest" }
+    ]
+  },
+  "town": {
+    "text": ["The town is quiet but welcoming."],
+    "choices": [
+      { "label": "Return to Aurora", "goto": "prologue" }
+    ]
+  },
+  "forest": {
+    "text": ["Trees surround you in every direction."],
+    "choices": [
+      { "label": "Return to Aurora", "goto": "prologue" }
+    ]
   }
 }
