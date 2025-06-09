@@ -1,0 +1,10 @@
+/* css/style.css */
+html,body{margin:0;height:100%;background:#111;color:#eee;font-family:sans-serif}
+#sidebar{width:250px;overflow-y:auto;background:#222;padding:1rem;float:left;height:100%}
+#main{margin-left:250px;display:flex;flex-direction:column;height:100%}
+#dialog{flex:1;padding:2rem;font-size:1.2rem;line-height:1.5}
+#choices button{display:block;margin:.5rem 0;width:100%}
+#settingsBtn{align-self:flex-end;margin:1rem}
+.modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center}
+.modal .panel{background:#222;padding:1.5rem;border:1px solid #555;width:240px;text-align:center}
+.modal .panel button{margin:.5rem 0;width:100%}
