@@ -1,0 +1,7 @@
+// data/characters.json
+{
+  "Aurora": {
+    "portrait": "img/aurora.png",
+    "voice": null
+  }
+}
