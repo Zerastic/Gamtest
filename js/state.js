@@ -4,9 +4,9 @@ export const SAVE_KEY = 'HybridIF_save';
 export function initialState(){
   return {
     scene: 'prologue',
-    flags: {},
-    stats: { hp: 10, xp: 0 },
-    inventory: []
+    flags: { time: 'Day 1 - Morning' },
+    stats: { hp: 100, xp: 0, gold: 5, affection: 50 },
+    inventory: ['potion']
   };
 }
 

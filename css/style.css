@@ -1,10 +1,65 @@
-/* css/style.css */
-html,body{margin:0;height:100%;background:#111;color:#eee;font-family:sans-serif}
-#sidebar{width:250px;overflow-y:auto;background:#222;padding:1rem;float:left;height:100%}
-#main{margin-left:250px;display:flex;flex-direction:column;height:100%}
-#dialog{flex:1;padding:2rem;font-size:1.2rem;line-height:1.5}
-#choices button{display:block;margin:.5rem 0;width:100%}
-#settingsBtn{align-self:flex-end;margin:1rem}
+/* layout */
+#sidebar{
+  position:fixed; left:0; top:0; bottom:0; width:260px;
+  background:#232323; color:#eaeaea; display:flex; flex-direction:column;
+  font-family:"Inter",sans-serif; box-shadow:2px 0 8px #0007;
+}
+#sidebar h2{margin:.5rem 0; font-size:1rem; color:#79f2ff; letter-spacing:.04em}
+
+/* scrollable panes */
+#history,#inventory{flex:1 1 120px; overflow-y:auto; margin:.5rem 0 .75rem .25rem}
+#history a{display:block; padding:.25rem .5rem; border-radius:4px; cursor:pointer}
+#history a:hover{background:#2f2f2f}
+#inventory li{display:flex; align-items:center; gap:.5rem; margin:.25rem 0}
+
+/* stats */
+#stats{padding:.25rem .5rem; background:#1b1b1b; border-radius:6px}
+#stats .row{display:flex; justify-content:space-between; margin:.25rem 0}
+#stats .danger{color:#ff6b6b} .warning{color:#f3c969} .good{color:#a2ff86}
+
+/* clock */
+#clock{margin:.5rem 0; text-align:center; font-size:.9rem; letter-spacing:.05em}
+
+/* action buttons */
+#actions button{
+  width:100%; margin:.25rem 0; padding:.4rem .5rem; border:none; border-radius:4px;
+  background:#3a3a3a; color:#fff; cursor:pointer; transition:background .15s
+}
+#actions button:hover{background:#4b7bec}
+
+#dialogueBox{
+  position:fixed; left:260px; right:0; bottom:0; height:30vh;
+  display:flex; background:#1d1d25ee; backdrop-filter:blur(6px);
+  border-top:2px solid #79f2ff; padding:1.2rem; box-sizing:border-box;
+  font-family:"Merriweather",serif; color:#e8e6ff
+}
+#portrait{
+  width:22%; background-size:contain; background-repeat:no-repeat; background-position:center;
+  border-right:2px solid #444; margin-right:1rem
+}
+#textPanel{flex:1; display:flex; flex-direction:column}
+#nameBar{
+  font-weight:bold; font-size:1rem; text-transform:uppercase; letter-spacing:.05em;
+  margin-bottom:.6rem; color:#79f2ff
+}
+#text{flex:1; line-height:1.55; font-size:1.05rem; overflow-y:auto}
+#continueHint{
+  align-self:flex-end; font-size:1.4rem; opacity:0;
+  animation:blink 1.2s infinite step-end; margin-left:.5rem
+}
+@keyframes blink{ 0%{opacity:0} 50%{opacity:1} 100%{opacity:0} }
+
+#choices{
+  position:fixed; left:260px; right:0; bottom:30vh;
+  display:flex; flex-direction:column; gap:.5rem; padding:0 1.6rem 1rem
+}
+#choices button{
+  background:#2d2d3a; color:#fff; border:none; padding:.6rem 1rem;
+  border-radius:6px; font-size:1rem; text-align:left; transition:transform .15s,background .15s
+}
+#choices button:hover{background:#4b7bec; transform:translateX(3px)}
+
+#settingsBtn{position:fixed; top:.5rem; right:.5rem}
 .modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center}
 .modal .panel{background:#222;padding:1.5rem;border:1px solid #555;width:240px;text-align:center}
 .modal .panel button{margin:.5rem 0;width:100%}
